@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: educ-users-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: educportgres
+      POSTGRES_PASSWORD: educpass
+      POSTGRES_DB: user-educ-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  nextjs:
+    build:
+      context: .
+    container_name: my_nextjs_app
+    command: npm run dev  # <<<<<< IMPORTANT: use dev mode
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://educportgres:educpass@postgres:5432/user-educ-db?schema=public"
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  pgdata:
