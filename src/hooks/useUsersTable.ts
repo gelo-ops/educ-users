@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
-import {User, UseUsersDataResult} from "../app/(pages)/users/component/types";
-import {DataTableColumn, SortDirection} from "../component/DataTable/types";
+import {User, UseUsersDataResult} from "@/app/(pages)/users/component/types";
+import {DataTableColumn, SortDirection} from "@/component/DataTable/types";
 
 
 export function useUsersData(): UseUsersDataResult {

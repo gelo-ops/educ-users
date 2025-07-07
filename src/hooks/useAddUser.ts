@@ -1,5 +1,6 @@
 import {useState} from "react";
-import {User} from "../app/(pages)/users/component/types";
+// import {User} from "../app/(pages)/users/component/types";
+import {User} from "@/app/(pages)/users/component/types"
 
 export interface FormData {
     name: string;

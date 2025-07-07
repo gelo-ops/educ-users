@@ -1,4 +1,4 @@
-import {DataTableColumn, SortDirection} from "../../../../component/DataTable/types";
+import {DataTableColumn, SortDirection} from "@/component/DataTable/types";
 
 export interface User {
     id: string;
