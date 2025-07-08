@@ -1,18 +1,13 @@
 import {DataTableColumn, SortDirection} from "@/component/DataTable/types";
+import {type User} from "@prisma/client";
 
-export interface User {
-    id: string;
-    name: string;
-    email: string;
-    createdAt: string;
-    updatedAt: string; // Added
-}
 
 export interface UserUpdate {
     email?: string;
     name?: string;
     age?: number;
 }
+
 export interface UseUsersDataResult {
     rows: User[];
     columns: DataTableColumn<User>[];

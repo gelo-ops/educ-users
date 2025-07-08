@@ -1,6 +1,5 @@
 import {useState} from "react";
-// import {User} from "../app/(pages)/users/component/types";
-import {User} from "@/app/(pages)/users/component/types"
+import {type User} from "@prisma/client";
 
 export interface FormData {
     name: string;

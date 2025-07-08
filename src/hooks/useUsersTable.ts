@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
-import {User, UseUsersDataResult} from "@/app/(pages)/users/component/types";
+import {UseUsersDataResult} from "@/app/(pages)/users/component/types";
 import {DataTableColumn, SortDirection} from "@/component/DataTable/types";
+import {type User} from "@prisma/client";
 
 
 export function useUsersData(): UseUsersDataResult {

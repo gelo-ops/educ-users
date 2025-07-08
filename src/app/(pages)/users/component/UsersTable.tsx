@@ -3,7 +3,7 @@ import {Alert, Button, Stack} from "@mui/material";
 import {useUsersData} from "@/hooks/useUsersTable";
 import {useAddUser} from "@/hooks/useAddUser";
 import {DataTable} from "@/component/DataTable";
-import {User} from "./types";
+import {type User} from "@prisma/client";
 import DefaultModal from "@/component/DefaultModal";
 import FormField from "@/component/FormField";
 import {AppButton} from "@/component/ui";

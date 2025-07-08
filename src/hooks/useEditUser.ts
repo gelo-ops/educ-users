@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {User} from "@/app/(pages)/users/component/types";
+import {type User} from "@prisma/client";
 
 export function useEditUser(onSuccess?: () => void) {
     const [open, setOpen] = useState(false);
