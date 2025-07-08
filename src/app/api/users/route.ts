@@ -4,6 +4,7 @@ import {NextRequest, NextResponse} from "next/server";
 import {isValidEmail} from "@/utils/validation";
 import {PrismaErrorHandler} from "@/lib/handler/ErrorHandler";
 import {ifEmailExist} from "@/lib/prisma-model/UserModel";
+import {UserUpdate} from "@/app/(pages)/users/component/types";
 
 
 /**
@@ -90,7 +91,7 @@ export async function PUT(req: NextRequest) {
         if (!name || !email) {
             return NextResponse.json({message: "Name and email are required"}, {status: 400});
         }
-        const updateData: Record<string, unknown> = {};
+        const updateData: Partial<UserUpdate> = {};
         if (name) updateData.name = name;
         if (email) {
             if (!isValidEmail(email)) {

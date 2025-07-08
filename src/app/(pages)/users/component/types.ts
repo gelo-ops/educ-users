@@ -8,6 +8,11 @@ export interface User {
     updatedAt: string; // Added
 }
 
+export interface UserUpdate {
+    email?: string;
+    name?: string;
+    age?: number;
+}
 export interface UseUsersDataResult {
     rows: User[];
     columns: DataTableColumn<User>[];
