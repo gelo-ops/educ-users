@@ -7,7 +7,7 @@ import {DataTableHead} from "./TableHead";
 import {DataTableBody} from "./TableBody";
 import {DataTablePagination} from "./Pagination";
 
-export const DataTable = <T, >({
+export const DataTable = <T extends object>({
                                    columns,
                                    rows,
                                    total,
@@ -32,7 +32,7 @@ export const DataTable = <T, >({
                 onSortChange={onSortChange}
             />
 
-            <DataTableBody columns={columns} rows={rows} getRowId={getRowId} loading={loading}
+            <DataTableBody<T> columns={columns} rows={rows} getRowId={getRowId} loading={loading}
             />
         </Table>
         <DataTablePagination

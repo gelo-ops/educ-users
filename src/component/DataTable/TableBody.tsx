@@ -2,14 +2,14 @@ import React from "react";
 import {CircularProgress, TableBody, TableCell, TableRow,} from "@mui/material";
 import {DataTableColumn} from "./types";
 
-interface Props<T> {
+interface Props<T extends object> {
     columns: DataTableColumn<T>[];
     rows: T[];
     getRowId: (row: T) => string | number;
     loading?: boolean;
 }
 
-export const DataTableBody = <T extends Record<string, unknown>>({
+export const DataTableBody = <T extends object>({
                                                                      columns, rows, getRowId, loading,
                                                                  }: Props<T>) => {
     if (loading) {
@@ -35,7 +35,7 @@ export const DataTableBody = <T extends Record<string, unknown>>({
     return (<TableBody>
         {rows.map((row) => (<TableRow key={getRowId(row)}>
             {columns.map((col) => {
-                const rawValue = row[col.field];
+                const rawValue = row[col.field as keyof T];
                 const displayValue = typeof rawValue === "string" || typeof rawValue === "number" ? rawValue : "";
 
                 return (<TableCell key={String(col.field)}>

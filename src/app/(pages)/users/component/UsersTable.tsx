@@ -9,6 +9,7 @@ import FormField from "@/component/FormField";
 import {AppButton} from "@/component/ui";
 import {useEditUser} from "@/hooks/useEditUser";
 import {useDeleteUser} from "@/hooks/useDeleteUser";
+import {DataTableColumn} from "@/component/DataTable/types";
 
 const UsersPage: React.FC = () => {
     const {
@@ -31,7 +32,7 @@ const UsersPage: React.FC = () => {
     const editUser = useEditUser(refetch);
     const deleteUser = useDeleteUser(refetch);
 
-    const columns = [...baseColumns, {
+    const columns: DataTableColumn<User>[] = [...baseColumns, {
         field: "actions", headerName: "Actions", render: (_, row: User) => (<>
             <AppButton
                 size="small"
