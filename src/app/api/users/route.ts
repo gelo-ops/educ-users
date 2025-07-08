@@ -90,15 +90,11 @@ export async function PUT(req: NextRequest) {
         if (!name || !email) {
             return NextResponse.json({message: "Name and email are required"}, {status: 400});
         }
-        const updateData: Record<string, any> = {};
+        const updateData: Record<string, unknown> = {};
         if (name) updateData.name = name;
         if (email) {
             if (!isValidEmail(email)) {
                 return NextResponse.json({message: "Invalid email format"}, {status: 400});
-            }
-            let isEmailExist = await ifEmailExist(email);
-            if (!isEmailExist.success) {
-                return NextResponse.json({message: "A user with this email does not exists."}, {status: 409});
             }
             updateData.email = email;
         }

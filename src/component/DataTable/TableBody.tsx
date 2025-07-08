@@ -1,5 +1,5 @@
 import React from "react";
-import {CircularProgress, TableBody, TableCell, TableRow} from "@mui/material";
+import {CircularProgress, TableBody, TableCell, TableRow,} from "@mui/material";
 import {DataTableColumn} from "./types";
 
 interface Props<T> {
@@ -9,9 +9,9 @@ interface Props<T> {
     loading?: boolean;
 }
 
-export const DataTableBody = <T, >({
-                                       columns, rows, getRowId, loading,
-                                   }: Props<T>) => {
+export const DataTableBody = <T extends Record<string, unknown>>({
+                                                                     columns, rows, getRowId, loading,
+                                                                 }: Props<T>) => {
     if (loading) {
         return (<TableBody>
             <TableRow>
@@ -34,9 +34,14 @@ export const DataTableBody = <T, >({
 
     return (<TableBody>
         {rows.map((row) => (<TableRow key={getRowId(row)}>
-            {columns.map((col) => (<TableCell key={String(col.field)}>
-                {col.render ? col.render((row as any)[col.field], row) : String((row as any)[col.field])}
-            </TableCell>))}
+            {columns.map((col) => {
+                const rawValue = row[col.field];
+                const displayValue = typeof rawValue === "string" || typeof rawValue === "number" ? rawValue : "";
+
+                return (<TableCell key={String(col.field)}>
+                    {col.render ? col.render(displayValue, row) : String(displayValue)}
+                </TableCell>);
+            })}
         </TableRow>))}
     </TableBody>);
 };
