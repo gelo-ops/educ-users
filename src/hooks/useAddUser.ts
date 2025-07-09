@@ -8,7 +8,7 @@ export interface FormData {
 
 interface UseAddUserResult {
     open: boolean;
-    setOpen: (v: boolean) => void;
+    setOpen: (open: boolean) => void;
     formData: Omit<User, "id" | "createdAt" | "updatedAt">;
     setFormData: (data: Omit<User, "id" | "createdAt" | "updatedAt">) => void;
     loading: boolean;

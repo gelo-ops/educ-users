@@ -10,8 +10,8 @@ interface Props<T extends object> {
 }
 
 export const DataTableBody = <T extends object>({
-                                                                     columns, rows, getRowId, loading,
-                                                                 }: Props<T>) => {
+                                                    columns, rows, getRowId, loading,
+                                                }: Props<T>) => {
     if (loading) {
         return (<TableBody>
             <TableRow>

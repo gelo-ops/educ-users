@@ -116,13 +116,13 @@ const UsersPage: React.FC = () => {
                 <FormField
                     label="Name"
                     value={editUser.user.name}
-                    onChange={(v) => editUser.updateField("name", v)}
+                    onChange={(name) => editUser.updateField("name", name)}
                     loading={editUser.loading}
                 />
                 <FormField
                     label="Email"
                     value={editUser.user.email}
-                    onChange={(v) => editUser.updateField("email", v)}
+                    onChange={(email) => editUser.updateField("email", email)}
                     loading={editUser.loading}
                 />
             </>)}
